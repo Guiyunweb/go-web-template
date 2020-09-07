@@ -1,6 +1,6 @@
 ## 系统配置
 [server]
-post = 8866
+post = 8081
 ## 数据库配置
 [datasource]
 database = "mysql"

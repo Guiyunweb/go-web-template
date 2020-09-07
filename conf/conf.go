@@ -4,6 +4,7 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/Guiyunweb/go-web-template/library/database/orm"
 	"github.com/Guiyunweb/go-web-template/library/log"
+	"github.com/Guiyunweb/go-web-template/server"
 	"io/ioutil"
 )
 
@@ -12,19 +13,23 @@ const (
 )
 
 var (
-	confPath string
-	Conf     = &Config{}
+	Conf = &Config{}
 )
 
 type Config struct {
 	Datasource *orm.Datasource
+	Server     *server.Server
 }
 
 func Init() (err error) {
 	if err := local(); err != nil {
 		return err
 	}
-	database()
+
+	//ORM配置
+	orm.NewMySQL(Conf.Datasource)
+	// server 配置
+	server.Info(Conf.Server)
 
 	return
 }
@@ -45,8 +50,4 @@ func local() (err error) {
 		return err
 	}
 	return
-}
-
-func database() {
-	orm.NewMySQL(Conf.Datasource)
 }

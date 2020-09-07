@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/Guiyunweb/go-web-template/conf"
 	"github.com/Guiyunweb/go-web-template/library/log"
+	"github.com/Guiyunweb/go-web-template/server"
 )
 
 func main() {
@@ -10,5 +11,5 @@ func main() {
 	if err := conf.Init(); err != nil {
 		log.Panic("初始化配置失败")
 	}
-	log.Info("运行成功")
+	server.Run()
 }
