@@ -2,6 +2,7 @@ package log
 
 import (
 	"fmt"
+	"os"
 	"time"
 )
 
@@ -11,53 +12,54 @@ type Logger struct {
 }
 
 const (
-	PANIC   = "| PANIC   |"
-	ERROR   = "| ERROR   |"
-	WARNING = "| WARNING |"
-	INFO    = "| INFO    |"
-	DEBUG   = "| DEBUG   |"
+	_PANIC   = "| PANIC   |"
+	_ERROR   = "| ERROR   |"
+	_WARNING = "| WARNING |"
+	_INFO    = "| INFO    |"
+	_DEBUG   = "| DEBUG   |"
 )
 
-func Println(logger Logger) {
+func _Println(logger Logger) {
 	fmt.Printf("[system] %s %s %s \n", time.Now().Format("2006-01-02 15:04:05"), logger.level, logger.meg)
 }
 
 func Panic(msg string) {
 	logger := Logger{
-		PANIC,
+		_PANIC,
 		msg,
 	}
-	Println(logger)
+	_Println(logger)
+	os.Exit(0)
 }
 
 func Error(msg string) {
 	logger := Logger{
-		ERROR,
+		_ERROR,
 		msg,
 	}
-	Println(logger)
+	_Println(logger)
 }
 
 func Waring(msg string) {
 	logger := Logger{
-		WARNING,
+		_WARNING,
 		msg,
 	}
-	Println(logger)
+	_Println(logger)
 }
 
 func Info(msg string) {
 	logger := Logger{
-		INFO,
+		_INFO,
 		msg,
 	}
-	Println(logger)
+	_Println(logger)
 }
 
 func Debug(msg string) {
 	logger := Logger{
-		DEBUG,
+		_DEBUG,
 		msg,
 	}
-	Println(logger)
+	_Println(logger)
 }

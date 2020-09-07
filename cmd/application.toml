@@ -1,0 +1,18 @@
+## 系统配置
+[server]
+post = 8866
+## 数据库配置
+[datasource]
+database = "mysql"
+dsn = "root:mengyuanyun@tcp(172.10.162.78:3306)/post?timeout=1s&readTimeout=1s&writeTimeout=1s&parseTime=true&loc=Local&charset=utf8mb4,utf8"
+show-sql = false
+maxIdleConn = 20
+maxOpenConn = 20
+connMaxLifetime = 30
+validationQuery = "SELECT 1 FROM DUAL"
+## redis配置
+[redis]
+host = "127.0.0.1"
+password = 6379
+timeout = "10s"
+database = 0
